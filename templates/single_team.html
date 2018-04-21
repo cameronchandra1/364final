@@ -1,0 +1,24 @@
+<h1>{{ team.name }}</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<form method = "POST" action = "/update/{{ team.name }}">
+        	{{ form.hidden_tag() }}
+        	{{ form.name.label }} {{ form.name() }}
+        	{{ form.submit() }}
+</form>
+
+
+{% for player in players %}
+      <strong>{{ player.name }} {{ player.position }} {{ player.mlb_team }}</strong>
+      </br>
+    <br><br>
+{% endfor %}
+
+
+{% endblock %}

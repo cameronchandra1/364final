@@ -1,0 +1,21 @@
+<h1>Get Player News</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+
+<form action="/show_news" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.players.label }} {{ form.players() }}<br>
+    {{ form.submit() }}<br>
+</form>
+
+
+
+
+
+{% endblock %}

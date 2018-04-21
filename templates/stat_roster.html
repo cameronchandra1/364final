@@ -1,0 +1,17 @@
+<h1>Rosters</h1>
+
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<ul>
+{% for t in team %}
+    <li><a href="http://localhost:5000/team_stat/{{ t.id }}">{{ t.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

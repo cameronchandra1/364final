@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<form method = "POST" action = "{{ url_for('show_news') }}">
+        	{{ form.hidden_tag() }}
+        	{{ form.players.label }} {{ form.players() }}
+        	{{ form.submit() }}
+        	{% if form.players.errors %}
+        <ul class="errors">{% for error in form.players.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+    {% endif %}
+</form>
+
+<div>
+<h1>Player Tweets</h1>
+
+    {% for player,tweet in player_dict.items() %}
+	   <h2> {{player}} </h2>
+       {% if not tweet %}
+       <p> This player is not saved. Go to the home page and enter it.</p>
+       {% endif %}
+	   {% for tw in tweet %}
+	   <ol> {{tw}} </ol>
+       {% endfor %}
+    {% endfor %} 
+</div>
+
+
+
+
+
+
+{% endblock %}

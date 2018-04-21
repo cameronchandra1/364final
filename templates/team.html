@@ -1,0 +1,20 @@
+<h1>Create Team</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.team_name.label }} {{ form.team_name() }}<br>
+    {{ form.player_picks.label }} {{ form.player_picks() }}
+    {{ form.submit() }}<br>
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+<h1>SI364 Fantasy Baseball</h1>
+
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+<br>
+
+{% block navigation %}
+<ul><i>
+    <li><a href="{{ url_for('index') }}">Home</a>
+    <li><a href="{{ url_for('create_team') }}">Create a Team</a></li>
+    <li><a href="{{ url_for('show_teams') }}">Your Rosters</a></li>
+    <li><a href="{{ url_for('show_stats') }}">Team Stats</a></li>
+    <li><a href="{{ url_for('show_news') }}">Player News</a></li>
+</i>
+</ul>
+<p>--------</p><br>
+{% endblock %}
+
+
+{% block main_content %}
+<h1>Add Players</h1>
+
+
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.first.label }} {{ form.first() }}<br>
+    {{ form.second.label }} {{ form.second() }}<br>
+    {{ form.short.label }} {{ form.short() }}<br>
+    {{ form.third.label }} {{ form.third() }}<br>
+    {{ form.catcher.label }} {{ form.catcher() }}<br>
+    {{ form.left.label }} {{ form.left() }}<br>
+    {{ form.right.label }} {{ form.right() }}<br>
+    {{ form.center.label }} {{ form.center() }}<br>
+    {{ form.submit() }}<br>
+</form>
+
+
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+
+{% endblock %}

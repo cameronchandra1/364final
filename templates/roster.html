@@ -1,0 +1,36 @@
+<h1>Rosters</h1>
+
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% if not team %}
+There are no teams to show
+
+{% else %}
+
+<ul>
+{% for t in team %}
+    <li><a href="http://localhost:5000/team/{{ t.id }}">{{ t.name }}</a>
+    	<form method="POST" action="/delete/{{ t.name }}">
+    		{{ form.hidden_tag() }}
+    		{{ form.submit() }}
+    	</form>
+    </li>
+
+{% endfor %}
+</ul>
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+
+{% endblock %}
